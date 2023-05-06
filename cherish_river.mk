@@ -19,8 +19,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-# Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common CherishOS stuff
+$(call inherit-product, vendor/cherish/config/common_full_phone.mk)
+TARGET_GAPPS_ARCH := arm64
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_SUPPORTS_QUICK_TAP := true
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.cherish.maintainer=FPSensor
+
+CHERISH_BUILD_TYPE := OFFICIAL
 
 # Inherit from river device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
@@ -28,7 +36,7 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := river
 PRODUCT_MANUFACTURER := motorola
-PRODUCT_NAME := lineage_river
+PRODUCT_NAME := cherish_river
 PRODUCT_MODEL := moto g(7)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
